@@ -32,8 +32,6 @@ app.get('/', (req, res) => {
         プロパティ名はindex.ejsで使用しますので、何の値が入ってるかわかるような名前にしましょう。
       */
       number: num,
-      mapList: mapList1
-      // map: mapList2
     });
   });
 });
