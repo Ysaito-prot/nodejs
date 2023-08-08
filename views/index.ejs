@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>User list</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>名前</th>
+                <th>email</th>
+                <th>更新</th>
+                <th>削除</th>
+            </tr>
+        </table>
+        <label>ID：<input type="text" id="nameText"></label>
+        <input type="button" value="Check" id="checkButton">
+        <p id="msg"></ｐ>
+
+        <script type="text/javascript">
+
+            // ★実務課題01
+            let users = JSON.parse('<%= JSON.stringify(users) %>'.replace(/&#34;/g, '"'));
+            console.log(users);
+
+            function buttonClick() {
+                if(nameText.value === "2"){
+                    msg.innerText = `名前:${users[0].name}、email:${users[0].email}`;
+                }else if(nameText.value === "13"){
+                    msg.innerText = `名前:${users[1].name}、email:${users[1].email}`;
+                }else if(nameText.value === "15"){
+                    msg.innerText = `名前:${users[2].name}、email:${users[2].email}`;
+                }else if(nameText.value === "17"){
+                    msg.innerText = `名前:${users[3].name}、email:${users[3].email}`;
+                }else if(nameText.value === "18"){
+                    msg.innerText = `名前:${users[4].name}、email:${users[4].email}`;
+                }else{
+                    msg.innerText = "Nothing";
+                }
+            }
+
+            // pタグ情報の取得
+            let msg = document.getElementById('msg');
+            // テキストボックスの情報取得
+            let nameText = document.getElementById('nameText');
+
+            // ボタンタグの情報取得
+            let checkButton = document.getElementById('checkButton');
+            // ボタンがクリックされた時に関数buttonClickが動く
+            checkButton.addEventListener('click', buttonClick);
+        </script>
+    </body>
+</html>
