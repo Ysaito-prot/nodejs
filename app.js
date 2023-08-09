@@ -2,9 +2,11 @@ const path = require('path');
 const express = require('express');
 const ejs = require('ejs');
 const app = express();
+const bodyParser = require('body-parser');
 const port = 3000;
 
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const mysql = require('mysql2');
 
@@ -19,7 +21,7 @@ const con = mysql.createConnection({
 app.get('/', (req, res) => {
   const sql = "select * from users";
   // 参考例
-  const num = 10000;
+  // const num = 10000;
 
   // ==========ここまでの範囲で書くようにしましょう。==========
   con.query(sql, function (err, result, fields) {
@@ -31,7 +33,7 @@ app.get('/', (req, res) => {
         指定の仕方はオブジェクトの考え方と同じで、プロパティ名: 値の形になります。値の部分は変数名を入れるようにして下さい。
         プロパティ名はindex.ejsで使用しますので、何の値が入ってるかわかるような名前にしましょう。
       */
-      number: num,
+      // number: num,
     });
   });
 });
